@@ -19,4 +19,14 @@ struct ubigint{
         }
         cout << endl;
     }
+    void inc(){
+        num[0]++;
+        for (int i = 0; i < len; i++) {
+            if (num[i] == 0) {
+                num[i + 1]++;
+            } else {
+                break;
+            }
+        }
+    }
 };
