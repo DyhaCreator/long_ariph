@@ -29,4 +29,25 @@ struct ubigint{
             }
         }
     }
+    bool operator==(ubigint const &n){
+        ubigint a = *this;
+        ubigint b = n;
+        for(int i = 0; i < len; i++) {
+            if (a.num[i] != b.num[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    bool operator<(ubigint const &n){
+        ubigint a = *this;
+        ubigint b = n;
+        if (a == b) return false;
+        for (int i = len - 1; i >= 0; i--) {
+            if (a.num[i] > b.num[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
