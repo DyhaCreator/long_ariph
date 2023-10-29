@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    ull a = 18446744073709551615;
-    cout << a << endl;
+    ubigint b = ubigint(1);
+    b.simplePrint();
     return 0;
 }
