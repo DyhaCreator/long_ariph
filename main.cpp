@@ -5,10 +5,10 @@
 using namespace std;
 
 int main() {
-    ubigint a = ubigint(4);
+    ubigint a = ubigint(2);
     ubigint b = ubigint(3);
     a.simplePrint();
     b.simplePrint();
-    cout << (a < b) << endl;
+    cout << (a > b) << endl;
     return 0;
 }
