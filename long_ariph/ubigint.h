@@ -69,7 +69,17 @@ struct ubigint{
     ubigint operator+(ubigint const &n){
         ubigint a = *this;
         ubigint b = n;
-        ubigint c;
+        ubigint c = ubigint(0);
+
+        int carry = 0;
+        for (int i = 0; i < len; i++) {
+            ull d = (long long)a.num[i] + (long long)b.num[i] + (long long)carry;
+            carry = 0;
+            if (d > 4294967295) {
+                carry = 1;
+            }
+            c.num[i] = d % 4294967296;
+        }
 
         return c;
     }

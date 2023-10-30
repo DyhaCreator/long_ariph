@@ -12,10 +12,10 @@ struct x{
 };
 
 int main() {
-    ubigint a = ubigint(10);
-    ubigint b = ubigint(12);
+    ubigint a = ubigint(4294967295);
+    ubigint b = ubigint(4294967297);
     ubigint c = ubigint(0);
-    c = ubigint(3);
+    c = a + b;
     c.simplePrint();
     return 0;
 }
