@@ -5,7 +5,7 @@
 using namespace std;
 
 struct ubigint{
-    const int len = 4;
+    unsigned int len = 4;
     unsigned int num[4] = {0};
     ubigint(){}
     ubigint(ull a){
@@ -65,5 +65,12 @@ struct ubigint{
             }
         }
         return true;
+    }
+    ubigint operator+(ubigint const &n){
+        ubigint a = *this;
+        ubigint b = n;
+        ubigint c;
+
+        return c;
     }
 };
