@@ -79,6 +79,7 @@ struct ubigint{
                 carry = 1;
             }
             c.num[i] = d % 4294967296;
+            
         }
 
         return c;
