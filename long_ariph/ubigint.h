@@ -13,12 +13,28 @@ struct ubigint{
         a /= 4294967296;
         num[1] = a % 4294967296;
     }
+    // aux func ---
     void simplePrint(){
         for (int i = 0; i < len; i++) {
             cout << num[i] << " ";
         }
         cout << endl;
     }
+    ubigint min(ubigint a, ubigint b){
+        if (a < b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+    ubigint max(ubigint a, ubigint b){
+        if (a > b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+    // just a func ---
     void inc(){
         num[0]++;
         for (int i = 0; i < len; i++) {
@@ -79,8 +95,16 @@ struct ubigint{
                 carry = 1;
             }
             c.num[i] = d % 4294967296;
-            
+
         }
+        return c;
+    }
+    ubigint operator-(ubigint const &n){
+        ubigint a = ubigint::min(*this, n);
+        ubigint b = n;
+        ubigint c = ubigint(0);
+
+        
 
         return c;
     }
