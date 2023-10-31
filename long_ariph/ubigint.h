@@ -5,8 +5,8 @@
 using namespace std;
 
 struct ubigint{
-    unsigned int len = 4;
-    unsigned int num[4] = {0};
+    unsigned int len = 256;
+    unsigned int num[256] = {0};
     ubigint(){}
     ubigint(ull a){
         num[0] = a % 4294967296;
@@ -124,6 +124,13 @@ struct ubigint{
             c = c + mult_on_num(a, b.num[i]);
         }
 
+        return c;
+    }
+    ubigint pow(ubigint a, ubigint b) {
+        ubigint c = ubigint(1);
+        for (ubigint i = ubigint(0); i < b; i.inc()) {
+            c = c * a;
+        }
         return c;
     }
 };

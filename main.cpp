@@ -6,9 +6,9 @@ using namespace std;
 
 int main() {
     ubigint a = ubigint(3);
-    ubigint b = ubigint(2);
+    ubigint b = ubigint(3);
     ubigint c = ubigint(0);
-    c = a * b;
+    c = c.pow(ubigint(2), c.pow(ubigint(3), c.pow(ubigint(3), ubigint(2))));
     c.simplePrint();
     return 0;
 }
