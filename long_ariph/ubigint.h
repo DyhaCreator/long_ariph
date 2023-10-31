@@ -108,4 +108,15 @@ struct ubigint{
 
         return c;
     }
+    ubigint operator*(ubigint const &n){
+        ubigint a = ubigint::max(*this, n);
+        ubigint b = ubigint::min(*this, n);
+        ubigint c = ubigint(0);
+
+        for (ubigint i = ubigint(0); i < b; i.inc()) {
+            c = c + a;
+        }
+
+        return c;
+    }
 };
