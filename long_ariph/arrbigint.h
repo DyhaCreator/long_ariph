@@ -4,11 +4,11 @@
 #define ull unsigned long long
 using namespace std;
 
-struct ubigint{
-    unsigned int len = 256;
-    unsigned int num[256] = {0};
-    ubigint(){}
-    ubigint(ull a){
+struct arrbigint{
+    unsigned int len = 4;
+    unsigned int num[4] = {0};
+    arrbigint(){}
+    arrbigint(ull a){
         num[0] = a % 4294967296;
         a /= 4294967296;
         num[1] = a % 4294967296;
@@ -20,14 +20,14 @@ struct ubigint{
         }
         cout << endl;
     }
-    ubigint min(ubigint a, ubigint b){
+    arrbigint min(arrbigint a, arrbigint b){
         if (a < b) {
             return a;
         } else {
             return b;
         }
     }
-    ubigint max(ubigint a, ubigint b){
+    arrbigint max(arrbigint a, arrbigint b){
         if (a > b) {
             return a;
         } else {
@@ -45,9 +45,9 @@ struct ubigint{
             }
         }
     }
-    bool operator==(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
+    bool operator==(arrbigint const &n){
+        arrbigint a = *this;
+        arrbigint b = n;
         for(int i = 0; i < len; i++) {
             if (a.num[i] != b.num[i]) {
                 return false;
@@ -55,14 +55,14 @@ struct ubigint{
         }
         return true;
     }
-    bool operator!=(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
+    bool operator!=(arrbigint const &n){
+        arrbigint a = *this;
+        arrbigint b = n;
         return !(a == b);
     }
-    bool operator<(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
+    bool operator<(arrbigint const &n){
+        arrbigint a = *this;
+        arrbigint b = n;
         if (a == b) return false;
         for (int i = len - 1; i >= 0; i--) {
             if (a.num[i] > b.num[i]) {
@@ -71,9 +71,9 @@ struct ubigint{
         }
         return true;
     }
-    bool operator>(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
+    bool operator>(arrbigint const &n){
+        arrbigint a = *this;
+        arrbigint b = n;
         if (a == b) return false;
         for (int i = len - 1; i >= 0; i--) {
             if (a.num[i] < b.num[i]) {
@@ -82,8 +82,8 @@ struct ubigint{
         }
         return true;
     }
-    ubigint operator+(ubigint const &n){
-        ubigint c = ubigint(0);
+    arrbigint operator+(arrbigint const &n){
+        arrbigint c = arrbigint(0);
         int carry = 0;
         for (int i = 0; i < len; i++) {
             ull d = (long long)this->num[i] + (long long)n.num[i] + (long long)carry;
@@ -96,14 +96,14 @@ struct ubigint{
         }
         return c;
     }
-    ubigint operator-(ubigint const &n){
-        ubigint a = ubigint::min(*this, n);
-        ubigint b = n;
-        ubigint c = ubigint(0);
+    arrbigint operator-(arrbigint const &n){
+        arrbigint a = arrbigint::min(*this, n);
+        arrbigint b = n;
+        arrbigint c = arrbigint(0);
         return c;
     }
-    ubigint mult_on_num(ubigint a, int b) {
-        ubigint c = ubigint(0);
+    arrbigint mult_on_num(arrbigint a, int b) {
+        arrbigint c = arrbigint(0);
         ll carry = 0;
         for (int i = 0; i < len; i++) {
             ull d = (unsigned long long)a.num[i] * (unsigned long long)b + carry;
@@ -115,10 +115,10 @@ struct ubigint{
         }
         return c;
     }
-    ubigint operator*(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
-        ubigint c = ubigint(0);
+    arrbigint operator*(arrbigint const &n){
+        arrbigint a = *this;
+        arrbigint b = n;
+        arrbigint c = arrbigint(0);
 
         for (int i = 0; i < len; i++) {
             c = c + mult_on_num(a, b.num[i]);
@@ -126,9 +126,9 @@ struct ubigint{
 
         return c;
     }
-    ubigint pow(ubigint a, ubigint b) {
-        ubigint c = ubigint(1);
-        for (ubigint i = ubigint(0); i < b; i.inc()) {
+    arrbigint pow(arrbigint a, arrbigint b) {
+        arrbigint c = arrbigint(1);
+        for (arrbigint i = arrbigint(0); i < b; i.inc()) {
             c = c * a;
         }
         return c;
