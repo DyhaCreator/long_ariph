@@ -83,13 +83,10 @@ struct ubigint{
         return true;
     }
     ubigint operator+(ubigint const &n){
-        ubigint a = *this;
-        ubigint b = n;
         ubigint c = ubigint(0);
-
         int carry = 0;
         for (int i = 0; i < len; i++) {
-            ull d = (long long)a.num[i] + (long long)b.num[i] + (long long)carry;
+            ull d = (long long)this->num[i] + (long long)n.num[i] + (long long)carry;
             carry = 0;
             if (d > 4294967295) {
                 carry = 1;
@@ -103,18 +100,28 @@ struct ubigint{
         ubigint a = ubigint::min(*this, n);
         ubigint b = n;
         ubigint c = ubigint(0);
-
-        
-
+        return c;
+    }
+    ubigint mult_on_num(ubigint a, int b) {
+        ubigint c = ubigint(0);
+        ll carry = 0;
+        for (int i = 0; i < len; i++) {
+            ull d = (unsigned long long)a.num[i] * (unsigned long long)b + carry;
+            carry = 0;
+            if (d > 4294967295) {
+                carry = d / 4294967296;
+            }
+            c.num[i] = d % 4294967296;
+        }
         return c;
     }
     ubigint operator*(ubigint const &n){
-        ubigint a = ubigint::max(*this, n);
-        ubigint b = ubigint::min(*this, n);
+        ubigint a = *this;
+        ubigint b = n;
         ubigint c = ubigint(0);
 
-        for (ubigint i = ubigint(0); i < b; i.inc()) {
-            c = c + a;
+        for (int i = 0; i < len; i++) {
+            c = c + mult_on_num(a, b.num[i]);
         }
 
         return c;
