@@ -6,9 +6,9 @@ using namespace std;
 
 int main() {
     arrbigint a = arrbigint(2);
-    arrbigint b = arrbigint(3);
+    arrbigint b = arrbigint(100);
     arrbigint c = arrbigint(0);
-    c = a * b;
+    c = c.pow(a, b);
     c.simplePrint();
     return 0;
 }

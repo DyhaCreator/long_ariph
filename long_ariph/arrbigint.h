@@ -5,8 +5,8 @@
 using namespace std;
 
 struct arrbigint{
-    unsigned int len = 4;
-    unsigned int num[4] = {0};
+    unsigned int len = 512;
+    unsigned int num[512] = {0};
     arrbigint(){}
     arrbigint(ull a){
         num[0] = a % 4294967296;
@@ -131,6 +131,15 @@ struct arrbigint{
         for (arrbigint i = arrbigint(0); i < b; i.inc()) {
             c = c * a;
         }
+        return c;
+    }
+    arrbigint fac(int value) {
+        arrbigint c = arrbigint(1);
+
+        for (int i = 1; i <= value; i++) {
+            c = mult_on_num(c, i);
+        }
+
         return c;
     }
 };
