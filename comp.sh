@@ -1,4 +1,4 @@
-echo "compile_your_prog"
+echo "compile"
 g++ main.cpp
 echo "start>"
 ./a.out
