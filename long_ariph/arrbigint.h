@@ -5,8 +5,8 @@
 using namespace std;
 
 struct arrbigint{
-    unsigned int len = 512;
-    unsigned int num[512] = {0};
+    unsigned int len = 4;
+    unsigned int num[4] = {0};
     arrbigint(){}
     arrbigint(ull a){
         num[0] = a % 4294967296;
@@ -34,6 +34,13 @@ struct arrbigint{
             return b;
         }
     }
+    arrbigint shift(arrbigint a, int offset) {
+        arrbigint b = arrbigint(0);
+        for (int i = offset; i < len; i++) {
+            b.num[i] = a.num[i - offset];
+        }
+        return b;
+    } 
     // just a func ---
     void inc(){
         num[0]++;
@@ -121,7 +128,7 @@ struct arrbigint{
         arrbigint c = arrbigint(0);
 
         for (int i = 0; i < len; i++) {
-            c = c + mult_on_num(a, b.num[i]);
+            c = c + shift(mult_on_num(a, b.num[i]), i);
         }
 
         return c;
